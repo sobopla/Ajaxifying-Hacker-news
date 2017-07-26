@@ -9,12 +9,31 @@ $(document).ready(function() {
       method: foundform.attr('method'),
     })
     .done(function(dataReturn) {
-
       myJson = JSON.parse(dataReturn)
-      //
       $(foundform).closest("article").find(".points").text(myJson.points);
-    // console.log($(this)) REMEMBER WHAT THIS IS NOW THE SCOPE IS CHANGED
       $arrow.css("color", "red");
     })
+  });
+
+  $(".delete").click(function(event) {
+    event.preventDefault();
+    var url = $(this).attr("href")
+    var deletebutton = $(this)
+    $.ajax({
+      url: url,
+      method: "delete",
+    })
+    .done(function(response) {
+      deletebutton.closest("article").remove()
+     // #debugger;
+    })
+
+
+
+
   })
+
+
 });
+
+

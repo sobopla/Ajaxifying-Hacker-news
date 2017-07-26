@@ -13,7 +13,6 @@ post '/posts/:id/vote' do
   post.votes.create(value: 1)
   if request.xhr?
     return { post: post, points: post.points}.to_json # get the post .points in the js and call here
-#or return
   else
     redirect "/posts"
   end
@@ -23,6 +22,8 @@ end
 delete '/posts/:id' do
   # write logic for deleting posts here.
   post = Post.delete(params[:id])
+  "this is deleted"
+
 
 end
 

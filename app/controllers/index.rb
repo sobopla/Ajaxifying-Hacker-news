@@ -23,10 +23,9 @@ delete '/posts/:id' do
   # write logic for deleting posts here.
   post = Post.delete(params[:id])
   "this is deleted"
-
-
 end
 
+#create
 post '/posts' do
   Post.create( title: params[:title],
                username: Faker::Internet.user_name,

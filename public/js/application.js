@@ -3,7 +3,7 @@ $(document).ready(function() {
     event.preventDefault();
       var $arrow = $(this)
       var foundform = $(this).closest("form");
-    // var form_data = form.serialize();
+
     $.ajax({
       url: foundform.attr('action'),
       method: foundform.attr('method'),

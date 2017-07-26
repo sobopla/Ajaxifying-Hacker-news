@@ -1,7 +1,20 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $(".vote-button").click(function(event) {
+    event.preventDefault();
+      var $arrow = $(this)
+      var foundform = $(this).closest("form");
+    // var form_data = form.serialize();
+    $.ajax({
+      url: foundform.attr('action'),
+      method: foundform.attr('method'),
+    })
+    .done(function(dataReturn) {
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+      myJson = JSON.parse(dataReturn)
+      //
+      $(foundform).closest("article").find(".points").text(myJson.points);
+    // console.log($(this)) REMEMBER WHAT THIS IS NOW THE SCOPE IS CHANGED
+      $arrow.css("color", "red");
+    })
+  })
 });

@@ -25,7 +25,7 @@ delete '/posts/:id' do
   "this is deleted"
 end
 
-#create
+#create with a partialize - take the form out of index and ruby call it
 post '/posts' do
   Post.create( title: params[:title],
                username: Faker::Internet.user_name,

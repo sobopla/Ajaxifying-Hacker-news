@@ -25,7 +25,7 @@ $(document).ready(function() {
     })
     .done(function(response) {
       deletebutton.closest("article").remove()
-     // #debugger;
+     // debugger;
     })
 
 

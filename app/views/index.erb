@@ -10,9 +10,9 @@
 
 
 <div class='post-container'>
-  <% @posts.each do |apost| %>
+  <% @posts.each do |curr_post| %>
 
-   <%= erb :"_article", locals: { post: apost }, layout: false %>
+   <%= erb :"_article", locals: { post: curr_post }, layout: false %>
 
   <% end %>
 </div>

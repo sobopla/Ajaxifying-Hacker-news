@@ -27,10 +27,26 @@ end
 
 #create with a partialize - take the form out of index and ruby call it
 post '/posts' do
-  Post.create( title: params[:title],
+  newPost = Post.create( title: params[:title],
                username: Faker::Internet.user_name,
                comment_count: rand(1000) )
-  redirect '/posts'
+
+  if newPost.save
+    if request.xhr?
+      status 200
+      erb :_article, layout: false, locals: { post: newPost }
+    else
+      redirect '/posts'
+    end
+  else
+    if request.xhr?
+      # do something here for ajax
+      status 422
+    else
+      flash[:error] = "Title cannot be blank"
+      redirect '/posts'
+    end
+  end
 end
 
 get '/post/:id' do
